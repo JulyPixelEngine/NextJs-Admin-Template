@@ -10,9 +10,20 @@ export default function DefaultLayout({
 } : {
     children: React.ReactNode
 }) {
+    const [sidebarOpen, setSidebarOpen] = useState(false)
     return (
-        <>
-        <Header/>
-        </>
-    )
+      <>
+        <div className="flex h-screen overflow-hidden">
+            <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
+          <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+            <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <main>
+                <div>
+                    {children}
+                </div>
+            </main>
+          </div>
+        </div>
+      </>
+    );
 }
