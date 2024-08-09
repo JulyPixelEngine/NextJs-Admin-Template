@@ -148,11 +148,16 @@ const menuGroups = [
 
 const SideBar = ({ sidebarOpen, setSidebarOpen}: SidebarProps) => {
 
-    const [pageName, setPageName] = useLocalStorage()
+    const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard")
     return (
-      <aside>
+      <aside
+        className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden border-r border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark lg:static lg:translate-x-0 ${
+          sidebarOpen
+            ? "translate-x-0 duration-300 ease-linear"
+            : "-translate-x-full"
+        }`}
+      >
         <div className="flex items-center justify-between gap-2 px-6 py-5.5">
-          SideBar
           <Link href="/">
             <Image
               src={"/vercel.svg"}
@@ -185,25 +190,23 @@ const SideBar = ({ sidebarOpen, setSidebarOpen}: SidebarProps) => {
         </div>
 
         <div className="no-scrollbar">
-            <nav className="mt-1 px-4 lg:px-6">
-                {menuGroups.map((group, groupIndex)=>(
-                    <div key={groupIndex}>
-                        <h3>
-                            {group.name}
-                        </h3>
-                        <ul className="mb-6 flex flex-col gap-2">
-                            {group.menuItems.map((menuItem, menuIndex) =>( 
-                                <SidebarItem
-                                    key={menuIndex}
-                                    item={menuItem}
-                                    pageName={pageName}
-                                />
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-            </nav>
-
+          <nav className="mt-1 px-4 lg:px-6">
+            {menuGroups.map((group, groupIndex) => (
+              <div key={groupIndex}>
+                <h3>{group.name}</h3>
+                <ul className="mb-6 flex flex-col gap-2">
+                  {group.menuItems.map((menuItem, menuIndex) => (
+                    <SidebarItem
+                      key={menuIndex}
+                      item={menuItem}
+                      pageName={pageName}
+                      setPageName={setPageName}
+                    />
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
       </aside>
     );

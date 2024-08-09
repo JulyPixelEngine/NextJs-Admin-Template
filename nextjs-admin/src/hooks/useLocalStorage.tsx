@@ -9,9 +9,18 @@ function useLocalStorage<T>(
   initialValue: T
 ): [T, (value: SetValue<T>) => void] {
     const [storedValue, setStoredValue] = useState(() => {
+        
+        console.log("useState initvalue", initialValue);
         return initialValue
     })
-  return [storedValue, setStoredValue];
+    useEffect(() => {
+        try{
+            console.log('useEffect')
+        }catch(error) {
+            console.log('useEffect Error ',error)
+        }
+    }, [key, storedValue])
+    return [storedValue, setStoredValue];
 }
 
 export default useLocalStorage;
