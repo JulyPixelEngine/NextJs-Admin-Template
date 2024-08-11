@@ -193,7 +193,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen}: SidebarProps) => {
           <nav className="mt-1 px-4 lg:px-6">
             {menuGroups.map((group, groupIndex) => (
               <div key={groupIndex}>
-                <h3>{group.name}</h3>
+                <h3 className="mb-5 text-sm font-medium text-dark-4 dark:text-dark-6">{group.name}</h3>
                 <ul className="mb-6 flex flex-col gap-2">
                   {group.menuItems.map((menuItem, menuIndex) => (
                     <SidebarItem

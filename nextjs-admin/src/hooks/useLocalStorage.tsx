@@ -10,11 +10,26 @@ function useLocalStorage<T>(
 ): [T, (value: SetValue<T>) => void] {
     const [storedValue, setStoredValue] = useState(() => {
         
-        console.log("useState initvalue", initialValue);
-        return initialValue
+        try {
+            if(typeof window !== "undefined") {
+                const item = window.localStorage.getItem(key)
+                return item ? JSON.parse(item) : initialValue
+            }
+            console.log("useState initvalue", initialValue);
+            return initialValue;
+        }catch(error) {
+
+            console.log("useState initvalue", initialValue);
+            return initialValue;
+        }
     })
     useEffect(() => {
         try{
+            const valueToStore = typeof storedValue == "function" ? storedValue(storedValue) : storedValue
+
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            }
             console.log('useEffect')
         }catch(error) {
             console.log('useEffect Error ',error)
