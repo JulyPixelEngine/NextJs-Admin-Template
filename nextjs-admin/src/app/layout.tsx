@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { useEffect, useState } from "react";
+import Loader from "@/components/common/Loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,9 @@ export default function RootLayout({
   }, [])
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>{children}</body>
+      <body suppressHydrationWarning={true} >
+        {loading ? <Loader/> : children}
+      </body>
     </html>
   );
 }
