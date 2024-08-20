@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/common/Loader";
 import { auth } from "@/auth"
-import { SessionProvider } from "next-auth/react";
+import Provider from "@/components/Provider/Provider";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   useEffect(() =>{
     const fetchSession = async () => {
       const session = await auth()
-      setSession(session)
+      // setSession(session)
     }
 
     console.log('layout session: ', session)
@@ -40,9 +40,7 @@ export default function RootLayout({
     // <SessionProvider>
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <SessionProvider session={session}>
-          {loading ? <Loader /> : children}
-        </SessionProvider>
+        <Provider>{loading ? <Loader /> : children}</Provider>
       </body>
     </html>
     // </SessionProvider>
