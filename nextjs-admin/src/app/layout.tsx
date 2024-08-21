@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Loader from "@/components/common/Loader";
-import { auth } from "@/auth"
+import { auth } from "../../auth"
 import Provider from "@/components/Provider/Provider";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
@@ -40,7 +40,7 @@ export default function RootLayout({
     // <SessionProvider>
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <Provider>{loading ? <Loader /> : children}</Provider>
+        <Provider session={session}>{loading ? <Loader /> : children}</Provider>
       </body>
     </html>
     // </SessionProvider>
