@@ -44,25 +44,16 @@
 //   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 // };
 
+import NextAuth from 'next-auth';
+import authConfig from './auth.config';
 
-import { NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
-import type { NextRequest } from "next/server";
+const { auth } = NextAuth(authConfig);
 
-export async function middleware(req: NextRequest) {
-  // 토큰을 가져옵니다. 사용자가 로그인하지 않은 경우 null을 반환합니다.
-  const token = await getToken({ req });
-
-  // 토큰이 없는 경우 로그인 페이지로 리디렉션합니다.
-  if (!token) {
-    return NextResponse.redirect(new URL("/signin", req.url));
+export default auth((req) => {
+  if (!req.auth) {
+    const url = req.url.replace(req.nextUrl.pathname, '/');
+    return Response.redirect(url);
   }
+});
 
-  // 요청이 정상적인 경우 다음 미들웨어 또는 페이지로 이동합니다.
-  return NextResponse.next();
-}
-
-// matcher: 보호할 경로 설정 (예: /dashboard 경로와 모든 하위 경로)
-export const config = {
-  matcher: ["/dashboard/:path*", "/profile/:path*"],
-};
+export const config = { matcher: ['/dashboard/:path*'] };

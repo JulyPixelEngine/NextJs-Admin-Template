@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Loader from "@/components/common/Loader";
-import { auth } from "../../auth"
+import { auth } from "@/auth"
 import Provider from "@/components/Provider/Provider";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +29,7 @@ export default function RootLayout({
     const fetchSession = async () => {
       const session = await auth()
       // setSession(session)
+      // redirect('/api/hello')
     }
 
     console.log('layout session: ', session)
