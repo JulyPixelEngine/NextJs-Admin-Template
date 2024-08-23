@@ -1,5 +1,6 @@
 import React from "react"
 import DefaultLayout from "@/components/Layouts/DefaultLayout"
+import LandingLayout from "@/components/Layouts/LandingLayout"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -10,9 +11,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <DefaultLayout>
+      <LandingLayout>
         
-      </DefaultLayout>
+      </LandingLayout>
     </>
   );
 }
