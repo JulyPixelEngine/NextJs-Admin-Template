@@ -14,9 +14,9 @@ export default async function Home() {
           <div className="relative z-20 flex items-center text-lg font-medium">
             <svg width="200" height="200" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100" height="100" fill="black" />
-                <rect x="30" y="35" width="40" height="30" rx="10" fill="none" stroke="white" stroke-width="5" />
-                <path d="M45 45 L40 50 L45 55" stroke="white" stroke-width="5" fill="none" />
-                <path d="M55 45 L60 50 L55 55" stroke="white" stroke-width="5" fill="none" />
+                <rect x="30" y="35" width="40" height="30" rx="10" fill="none" stroke="white" strokeWidth="5" />
+                <path d="M45 45 L40 50 L45 55" stroke="white" strokeWidth="5" fill="none" />
+                <path d="M55 45 L60 50 L55 55" stroke="white" strokeWidth="5" fill="none" />
                 <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white" font-weight="bold">bytecode</text>
                 <text x="50%" y="95%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" fill="white">WEB PROGRAMMING</text>
             </svg>
