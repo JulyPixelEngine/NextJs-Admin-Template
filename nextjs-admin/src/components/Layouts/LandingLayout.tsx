@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
+import AuthForm from '@/components/Forms/AuthForm'
+
 
 export default async function Home() {
     const session = (await getServerSession()) || {};
@@ -17,8 +19,8 @@ export default async function Home() {
                 <rect x="30" y="35" width="40" height="30" rx="10" fill="none" stroke="white" strokeWidth="5" />
                 <path d="M45 45 L40 50 L45 55" stroke="white" strokeWidth="5" fill="none" />
                 <path d="M55 45 L60 50 L55 55" stroke="white" strokeWidth="5" fill="none" />
-                <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="white" font-weight="bold">bytecode</text>
-                <text x="50%" y="95%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" fill="white">WEB PROGRAMMING</text>
+                <text x="50%" y="80%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="13" fill="white" fontWeight="bold">bytecode</text>
+                <text x="50%" y="95%" dominantBaseline="middle" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="5" fill="white">WEB PROGRAMMING</text>
             </svg>
             Logo
           </div>
@@ -39,6 +41,7 @@ export default async function Home() {
               </p>
             </div>
 
+            <AuthForm/>
             <p className="px-8 text-center text-sm">
               By clicking continue, you agree to our
             </p>

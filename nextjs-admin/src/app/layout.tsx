@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
-import Loader from "@/components/common/Loader";
+import Loader from "@/components/Common/Loader";
 import { auth } from "@/auth"
 import Provider from "@/components/Provider/Provider";
 import "./globals.css";
